@@ -91,5 +91,5 @@ resource "local_file" "flux_sync" {
 
 resource "local_file" "flux_pub_key" {
   content     = tls_private_key.flux.public_key_openssh
-  filename = "${path.module}/../../${var.target_path}/${var.namespace}/flux_id_rsa.pub"
+  filename = "${path.module}/../../${var.flux_targetpath}/${var.flux_namespace}/flux_id_rsa.pub"
 }

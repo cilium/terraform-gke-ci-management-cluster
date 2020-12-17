@@ -19,6 +19,8 @@ $ terraform init && terraform apply \
 $ ./scripts/get-credentials.sh
 ```
 
+## Flux
+
 Setup flux for management cluster:
 
 ```bash
@@ -28,4 +30,25 @@ $ terraform init && terraform apply -var 'github_owner=fristonio' \
     -var 'repository_name=iso-test-operator' \
     -var 'kubeconfig_path=./../secrets/kubeconfig' \
     -var 'release_branch=flux-release'
+```
+
+## Cluster-API
+
+First download clusterctl utiltiy provided by Cluster-API project and run `init` to set
+up cluster-api on the management cluster.
+
+```bash
+# Download
+$ curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v0.3.11/clusterctl-linux-amd64 \
+    -o clusterctl && chmod +x clusterctl
+
+$ export GCP_B64ENCODED_CREDENTIALS=$( cat secrets/service-account.management-cluster-admin.key.json | base64 | tr -d '\n' )
+
+# Install cluster-api with the required components in the manaagement cluster.
+$ ./clusterctl init --kubeconfig=secrets/kubeconfig \
+    --config=cluster-api/clusterctl.yaml \
+    --core cluster-api \
+    --bootstrap kubeadm \
+    --control-plane kubeadm
+    --infrastructure aws,gcp,azure
 ```

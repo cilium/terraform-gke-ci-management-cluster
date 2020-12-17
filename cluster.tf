@@ -29,7 +29,7 @@ resource "google_container_cluster" "management_cluster" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 

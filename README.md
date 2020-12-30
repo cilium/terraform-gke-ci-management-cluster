@@ -34,6 +34,9 @@ $ terraform init && terraform apply -var 'github_owner=fristonio' \
 
 ## Cluster-API
 
+> The setup for cluster api is optional and is only requrired if the operator
+is required to manage cluster based on ClusterAPI provisioner.
+
 First download clusterctl utiltiy provided by Cluster-API project and run `init` to set
 up cluster-api on the management cluster.
 
@@ -52,3 +55,8 @@ $ ./clusterctl init --kubeconfig=secrets/kubeconfig \
     --control-plane kubeadm
     --infrastructure aws,gcp,azure
 ```
+
+## Terraform
+
+> This setup is optional and is only required for terraform-controller based
+infrastructure provisioning.

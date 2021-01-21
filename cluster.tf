@@ -34,8 +34,6 @@ resource "google_container_cluster" "management_cluster" {
 }
 
 resource "google_container_node_pool" "management_cluster" {
-  provider = google-beta
-
   name               = "${var.cluster_name}-np"
   location           = var.cluster_location
   cluster            = google_container_cluster.management_cluster.name

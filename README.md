@@ -8,12 +8,14 @@ the project
 
 ```bash
 # Create the required service account on GCP
-$ ./scripts/create-service-accounts.sh <project-id> management-cluster-admin
+$ ./scripts/create-service-accounts.sh ${PROJECT_ID} ci-management-cluster-admin
 
 # Download and setup terraform - https://www.terraform.io/downloads.html
-$ terraform init && terraform apply \
-    -var 'project_id=<project-id>'
-    -var 'svc_account_key=management-cluster-admin'
+$ terraform init 
+$ terraform apply \
+    -var 'project_id=${PROJECT_ID}' \
+    -var 'svc_account_key=ci-management-cluster-admin' \
+    -var 'cluster_name=iso-test-management-cluster'
 
 # Get the kubeconfig for the create GKE container cluster.
 $ ./scripts/get-credentials.sh
@@ -29,7 +31,7 @@ $ cd flux
 $ terraform init && terraform apply -var 'github_owner=fristonio' \
     -var 'repository_name=iso-test-operator' \
     -var 'kubeconfig_path=./../secrets/kubeconfig' \
-    -var 'release_branch=flux-release'
+    -var 'release_branch=master'
 ```
 
 ## Terraform

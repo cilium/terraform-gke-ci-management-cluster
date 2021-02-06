@@ -42,7 +42,7 @@ variable "cluster_location" {
 
 variable "node_machine_type" {
   type        = string
-  default     = "n1-standard-4"
+  default     = "n1-standard-2"
   description = "GCP machine type to use for the management Kubernetes cluster node"
 }
 

@@ -7,6 +7,8 @@ resource "google_compute_network" "management_cluster_vpc" {
 }
 
 resource "google_compute_subnetwork" "management_cluster_subnets" {
+  depends_on = [ google_compute_network.management_cluster_vpc ]
+
   for_each      = var.subnets
   name          = each.key
   region        = each.key

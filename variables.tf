@@ -37,7 +37,7 @@ variable "cluster_name" {
 variable "cluster_location" {
   type        = string
   default     = "us-central1"
-  description = "Location to create the GKE clsuter in"
+  description = "Location to create the GKE cluster in"
 }
 
 variable "node_machine_type" {

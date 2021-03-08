@@ -1,4 +1,5 @@
 resource google_container_cluster management_cluster {
+  provider = google-beta
 
   depends_on = [ google_compute_subnetwork.management_cluster_subnets ]
 
@@ -27,6 +28,20 @@ resource google_container_cluster management_cluster {
   }
 
   datapath_provider = "ADVANCED_DATAPATH"
+
+  addons_config {
+    config_connector_config {
+      enabled = true
+    }
+
+    dns_cache_config {
+      enabled = true
+    }
+
+    gce_persistent_disk_csi_driver_config {
+      enabled = true
+    }
+  }
 
   timeouts {
     create = "30m"

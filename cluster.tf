@@ -1,4 +1,5 @@
 resource google_container_cluster management_cluster {
+
   depends_on = [ google_compute_subnetwork.management_cluster_subnets ]
 
   name               = var.cluster_name
@@ -24,6 +25,8 @@ resource google_container_cluster management_cluster {
   workload_identity_config {
     identity_namespace = "${var.project_id}.svc.id.goog"
   }
+
+  datapath_provider = "ADVANCED_DATAPATH"
 
   timeouts {
     create = "30m"

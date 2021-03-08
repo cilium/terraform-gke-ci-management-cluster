@@ -60,7 +60,6 @@ variable node_count {
 
 variable project_id {
   type        = string
-  # default     = "cilium-ci"
   description = "GCP project to create the management cluster in"
 }
 

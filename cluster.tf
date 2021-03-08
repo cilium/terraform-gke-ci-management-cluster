@@ -1,4 +1,4 @@
-resource "google_container_cluster" "management_cluster" {
+resource google_container_cluster management_cluster {
   depends_on = [ google_compute_subnetwork.management_cluster_subnets ]
 
   name               = var.cluster_name
@@ -35,7 +35,7 @@ resource "google_container_cluster" "management_cluster" {
   }
 }
 
-resource "google_container_node_pool" "management_cluster" {
+resource google_container_node_pool management_cluster {
   depends_on = [ google_container_cluster.management_cluster ]
 
   name               = "${var.cluster_name}-np"

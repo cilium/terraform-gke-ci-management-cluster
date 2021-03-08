@@ -1,4 +1,4 @@
-variable "subnets" {
+variable subnets {
   type    = map(string)
   # this is based on default network's config
   default = {
@@ -28,43 +28,43 @@ variable "subnets" {
   }
 }
 
-variable "cluster_name" {
+variable cluster_name {
   type        = string
   default     = "iso-test-management-cluster"
   description = "Name for the management cluster"
 }
 
-variable "cluster_location" {
+variable cluster_location {
   type        = string
   default     = "us-central1"
   description = "Location to create the GKE cluster in"
 }
 
-variable "node_machine_type" {
+variable node_machine_type {
   type        = string
   default     = "n1-standard-2"
   description = "GCP machine type to use for the management Kubernetes cluster node"
 }
 
-variable "node_image_type" {
+variable node_image_type {
   type        = string
   default     = "COS_CONTAINERD"
   description = "Image to use for the Kubernetes node"
 }
 
-variable "node_count" {
+variable node_count {
   type        = number
   default     = 1
   description = "Number of worker nodes in the management cluster."
 }
 
-variable "project_id" {
+variable project_id {
   type        = string
   # default     = "cilium-ci"
   description = "GCP project to create the management cluster in"
 }
 
-variable "svc_account_key" {
+variable svc_account_key {
   type        = string
   description = "Service account key name, must in path ./secrets/ in JSON format."
 }

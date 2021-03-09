@@ -27,7 +27,9 @@ resource google_container_cluster management_cluster {
     identity_namespace = "${var.project_id}.svc.id.goog"
   }
 
+  networking_mode   = "VPC_NATIVE"
   datapath_provider = "ADVANCED_DATAPATH"
+  ip_allocation_policy { }
 
   addons_config {
     config_connector_config {

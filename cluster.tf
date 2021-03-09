@@ -1,8 +1,6 @@
 resource google_container_cluster management_cluster {
   provider = google-beta
 
-  depends_on = [ google_compute_subnetwork.management_cluster_subnets ]
-
   name               = var.cluster_name
   location           = var.cluster_location
 
@@ -12,7 +10,7 @@ resource google_container_cluster management_cluster {
   remove_default_node_pool = true
 
   network            = google_compute_network.management_cluster_vpc.self_link
-  subnetwork         = var.cluster_location
+  subnetwork         = google_compute_subnetwork.management_cluster_subnets[var.cluster_location].self_link
 
   master_auth {
     username = ""

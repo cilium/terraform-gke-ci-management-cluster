@@ -68,11 +68,12 @@ resource google_container_node_pool management_cluster {
       node_metadata = "GKE_METADATA_SERVER"
     }
 
-    labels       = {
-      node-pool = "default"
+    labels = {
+      "node-pool"                 = "np1"
+      "gke-ci-management-cluster" = var.cluster_name
     }
 
-    tags = ["iso-test-management-cluster"]
+    tags = [ "gke-ci-management-cluster" ]
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",

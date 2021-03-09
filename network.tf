@@ -10,7 +10,7 @@ resource google_compute_subnetwork management_cluster_subnets {
   depends_on = [ google_compute_network.management_cluster_vpc ]
 
   for_each      = var.subnets
-  name          = each.key
+  name          = "${var.cluster_name}-${each.key}"
   region        = each.key
   ip_cidr_range = each.value
   network       = google_compute_network.management_cluster_vpc.self_link
